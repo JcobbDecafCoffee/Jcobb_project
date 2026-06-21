@@ -12,13 +12,13 @@
 
 <style>
   :root {
-    --espresso: #0F241F;
-    --cream: #F5F0E6;
-    --roast-caramel: #A8362B;
-    --dark-brown: #1F3D36;
-    --greenbean-gold: #C99A3E;
-    --hairline: rgba(15, 36, 31, 0.14);
-    --hairline-on-dark: rgba(245, 240, 230, 0.18);
+    --espresso: #2B2018;
+    --cream: #F2EFE6;
+    --roast-caramel: #7A3328;
+    --dark-brown: #4A5942;
+    --greenbean-gold: #9CA888;
+    --hairline: rgba(43, 32, 24, 0.14);
+    --hairline-on-dark: rgba(242, 239, 230, 0.18);
 
     --font-display: 'Fraunces', serif;
     --font-body: 'Inter', sans-serif;
@@ -110,15 +110,15 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 60%;
-    filter: saturate(0.75) contrast(1.05) brightness(0.9);
+    object-position: 30% center;
+    filter: saturate(0.9) contrast(1.02) brightness(0.88);
   }
   .hero-bg::before {
-    /* duotone color wash: deep teal shadows, mustard-gold highlights */
+    /* duotone color wash: mahogany shadows, sage-green highlights */
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(15,36,31,0.94) 0%, rgba(31,61,54,0.88) 38%, rgba(168,54,43,0.32) 72%, rgba(201,154,62,0.28) 100%);
+    background: linear-gradient(135deg, rgba(43,32,24,0.92) 0%, rgba(74,89,66,0.7) 45%, rgba(122,51,40,0.3) 78%, rgba(156,168,136,0.32) 100%);
     mix-blend-mode: multiply;
   }
   .hero-bg::after {
@@ -126,7 +126,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(100deg, rgba(15,36,31,0.95) 0%, rgba(15,36,31,0.82) 42%, rgba(15,36,31,0.55) 70%, rgba(15,36,31,0.4) 100%);
+    background: linear-gradient(100deg, rgba(43,32,24,0.95) 0%, rgba(43,32,24,0.8) 42%, rgba(43,32,24,0.5) 70%, rgba(43,32,24,0.35) 100%);
   }
   .hero-eyebrow {
     font-family: var(--font-mono);
@@ -218,7 +218,7 @@
     position: relative;
     height: 64px;
     border-radius: 14px;
-    background: linear-gradient(90deg, #D9B98A 0%, #C77B4A 28%, #A8362B 52%, #7A2620 76%, #1F3D36 100%);
+    background: linear-gradient(90deg, #D6CDA8 0%, #A9A06E 28%, #7A3328 52%, #5A241C 76%, #2B2018 100%);
     cursor: pointer;
     box-shadow: inset 0 2px 6px rgba(0,0,0,0.18);
   }
@@ -402,7 +402,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(201,154,62,0.2), transparent 55%);
+    background: radial-gradient(circle at 80% 20%, rgba(156,168,136,0.25), transparent 55%);
     pointer-events: none;
   }
   .cta-box h2 {
