@@ -12,13 +12,13 @@
 
 <style>
   :root {
-    --espresso: #1A1410;
-    --cream: #F7F3EC;
-    --roast-caramel: #8B5E3C;
-    --dark-brown: #3D2B1F;
-    --greenbean-gold: #C9A876;
-    --hairline: rgba(26, 20, 16, 0.12);
-    --hairline-on-dark: rgba(247, 243, 236, 0.18);
+    --espresso: #0F241F;
+    --cream: #F5F0E6;
+    --roast-caramel: #A8362B;
+    --dark-brown: #1F3D36;
+    --greenbean-gold: #C99A3E;
+    --hairline: rgba(15, 36, 31, 0.14);
+    --hairline-on-dark: rgba(245, 240, 230, 0.18);
 
     --font-display: 'Fraunces', serif;
     --font-body: 'Inter', sans-serif;
@@ -55,9 +55,9 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(247, 243, 236, 0.88);
+    background: rgba(15, 36, 31, 0.85);
     backdrop-filter: blur(8px);
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 0.5px solid var(--hairline-on-dark);
   }
   .header-inner {
     max-width: 1120px;
@@ -73,37 +73,67 @@
     font-size: 19px;
     letter-spacing: 0.01em;
     text-decoration: none;
+    color: var(--cream);
   }
   .logo .mark {
-    color: var(--roast-caramel);
+    color: var(--greenbean-gold);
   }
   .header-cta {
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.04em;
     text-decoration: none;
-    border: 1px solid var(--espresso);
+    color: var(--cream);
+    border: 1px solid var(--cream);
     padding: 9px 18px;
     border-radius: 100px;
     transition: background 0.25s ease, color 0.25s ease;
   }
   .header-cta:hover {
-    background: var(--espresso);
-    color: var(--cream);
+    background: var(--cream);
+    color: var(--espresso);
   }
 
   /* ---------- Hero ---------- */
   .hero {
-    padding: 120px 0 90px;
+    padding: 160px 0 110px;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+    filter: saturate(0.75) contrast(1.05) brightness(0.9);
+  }
+  .hero-bg::before {
+    /* duotone color wash: deep teal shadows, mustard-gold highlights */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15,36,31,0.94) 0%, rgba(31,61,54,0.88) 38%, rgba(168,54,43,0.32) 72%, rgba(201,154,62,0.28) 100%);
+    mix-blend-mode: multiply;
+  }
+  .hero-bg::after {
+    /* legibility scrim, stronger at left where text sits */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(15,36,31,0.95) 0%, rgba(15,36,31,0.82) 42%, rgba(15,36,31,0.55) 70%, rgba(15,36,31,0.4) 100%);
   }
   .hero-eyebrow {
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--roast-caramel);
+    color: var(--greenbean-gold);
     margin-bottom: 28px;
     display: flex;
     align-items: center;
@@ -113,7 +143,7 @@
     content: '';
     width: 28px;
     height: 1px;
-    background: var(--roast-caramel);
+    background: var(--greenbean-gold);
   }
   .hero h1 {
     font-family: var(--font-display);
@@ -122,19 +152,19 @@
     line-height: 1.08;
     letter-spacing: -0.01em;
     max-width: 880px;
-    color: var(--espresso);
+    color: var(--cream);
   }
   .hero h1 em {
     font-style: italic;
     font-weight: 400;
-    color: var(--roast-caramel);
+    color: var(--greenbean-gold);
   }
   .hero-sub {
     margin-top: 32px;
     font-size: 17px;
-    color: var(--dark-brown);
+    color: var(--cream);
     max-width: 540px;
-    opacity: 0.85;
+    opacity: 0.82;
   }
   .hero-actions {
     margin-top: 48px;
@@ -146,8 +176,8 @@
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 14.5px;
-    background: var(--espresso);
-    color: var(--cream);
+    background: var(--greenbean-gold);
+    color: var(--espresso);
     padding: 16px 30px;
     border-radius: 100px;
     text-decoration: none;
@@ -156,38 +186,39 @@
   }
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px -8px rgba(26, 20, 16, 0.35);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.45);
   }
   .btn-secondary {
     font-family: var(--font-body);
     font-weight: 500;
     font-size: 14.5px;
-    color: var(--espresso);
+    color: var(--cream);
     padding: 16px 8px;
     text-decoration: none;
-    border-bottom: 1px solid var(--espresso);
+    border-bottom: 1px solid var(--cream);
     align-self: center;
+    opacity: 0.9;
   }
 
   /* ---------- Roast slider signature element ---------- */
   .roast-signature {
     margin-top: 90px;
-    border-top: 0.5px solid var(--hairline);
+    border-top: 0.5px solid var(--hairline-on-dark);
     padding-top: 40px;
   }
   .roast-signature-label {
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.06em;
-    color: var(--dark-brown);
-    opacity: 0.7;
+    color: var(--cream);
+    opacity: 0.6;
     margin-bottom: 22px;
   }
   .roast-bar-track {
     position: relative;
     height: 64px;
     border-radius: 14px;
-    background: linear-gradient(90deg, #D9B98A 0%, #B8804A 28%, #8B5E3C 52%, #5C3A22 76%, #2B1B11 100%);
+    background: linear-gradient(90deg, #D9B98A 0%, #C77B4A 28%, #A8362B 52%, #7A2620 76%, #1F3D36 100%);
     cursor: pointer;
     box-shadow: inset 0 2px 6px rgba(0,0,0,0.18);
   }
@@ -218,12 +249,13 @@
     font-family: var(--font-display);
     font-size: 22px;
     font-weight: 500;
+    color: var(--cream);
   }
   .roast-readout-note {
     font-family: var(--font-mono);
     font-size: 13px;
-    color: var(--dark-brown);
-    opacity: 0.75;
+    color: var(--cream);
+    opacity: 0.65;
     text-align: right;
     max-width: 360px;
   }
@@ -234,7 +266,7 @@
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.04em;
-    color: var(--dark-brown);
+    color: var(--cream);
     opacity: 0.5;
   }
 
@@ -370,7 +402,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(201,168,118,0.18), transparent 55%);
+    background: radial-gradient(circle at 80% 20%, rgba(201,154,62,0.2), transparent 55%);
     pointer-events: none;
   }
   .cta-box h2 {
@@ -500,6 +532,9 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg">
+      <img src="assets/hero-poster.jpg" alt="" role="presentation">
+    </div>
     <div class="wrap">
       <div class="hero-eyebrow">Decaf, reconsidered</div>
       <h1>디카페인은 타협이라 했다.<br>우리는 그 말을 <em>다시 설계했다.</em></h1>
